@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 40 10% 92%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 40 10% 92%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 40 10% 92%;
+
+    --primary: 38 72% 56%;
+    --primary-foreground: 0 0% 5%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 40 10% 80%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 38 72% 56%;
+    --accent-foreground: 0 0% 5%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 38 72% 56%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 7%;
+    --sidebar-foreground: 40 10% 92%;
+    --sidebar-primary: 38 72% 56%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 14%;
+    --sidebar-accent-foreground: 40 10% 92%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 38 72% 56%;
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+
+    --tag-vegan: 142 60% 45%;
+    --tag-spicy: 15 85% 55%;
+    --tag-gf: 210 55% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .text-tag-vegan {
+    color: hsl(var(--tag-vegan));
+  }
+
+  .text-tag-spicy {
+    color: hsl(var(--tag-spicy));
+  }
+
+  .text-tag-gf {
+    color: hsl(var(--tag-gf));
+  }
+
+  .bg-tag-vegan {
+    background-color: hsl(var(--tag-vegan) / 0.15);
+  }
+
+  .bg-tag-spicy {
+    background-color: hsl(var(--tag-spicy) / 0.15);
+  }
+
+  .bg-tag-gf {
+    background-color: hsl(var(--tag-gf) / 0.15);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
