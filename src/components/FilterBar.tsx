@@ -1,40 +1,57 @@
-import type { DietaryTag } from "@/data/menuData";
+type FilterType = "all" | "veg" | "nonveg" | "bestseller" | "under200";
 
 interface FilterBarProps {
-  activeFilters: DietaryTag[];
-  onToggleFilter: (tag: DietaryTag) => void;
+  activeFilter: FilterType;
+  onFilterChange: (filter: FilterType) => void;
+  sortOrder: "none" | "low" | "high";
+  onSortChange: (sort: "none" | "low" | "high") => void;
 }
 
-const filters: { tag: DietaryTag; label: string; colorClass: string; bgClass: string }[] = [
-  { tag: "Vegetarian", label: "🌿 Vegetarian", colorClass: "text-tag-vegan", bgClass: "bg-tag-vegan" },
-  { tag: "Vegan", label: "🌱 Vegan", colorClass: "text-tag-vegan", bgClass: "bg-tag-vegan" },
-  { tag: "Gluten-Free", label: "🌾 Gluten-Free", colorClass: "text-tag-gf", bgClass: "bg-tag-gf" },
-  { tag: "Spicy", label: "🌶️ Spicy", colorClass: "text-tag-spicy", bgClass: "bg-tag-spicy" },
+const filters: { key: FilterType; label: string }[] = [
+  { key: "all", label: "All" },
+  { key: "veg", label: "🟢 Veg" },
+  { key: "nonveg", label: "🔴 Non-Veg" },
+  { key: "bestseller", label: "⭐ Bestseller" },
+  { key: "under200", label: "Under ₹200" },
 ];
 
-const FilterBar = ({ activeFilters, onToggleFilter }: FilterBarProps) => {
+const FilterBar = ({ activeFilter, onFilterChange, sortOrder, onSortChange }: FilterBarProps) => {
   return (
-    <div className="px-5 py-3 max-w-2xl mx-auto">
-      <div className="flex gap-2 overflow-x-auto scrollbar-hide">
-        {filters.map((f) => {
-          const isActive = activeFilters.includes(f.tag);
-          return (
-            <button
-              key={f.tag}
-              onClick={() => onToggleFilter(f.tag)}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium font-body whitespace-nowrap transition-all border ${
-                isActive
-                  ? `${f.bgClass} ${f.colorClass} border-current`
-                  : "bg-secondary/50 text-muted-foreground border-transparent hover:border-border"
-              }`}
-            >
-              {f.label}
-            </button>
-          );
-        })}
+    <div className="px-4 py-2 max-w-2xl mx-auto">
+      <div className="flex gap-2 overflow-x-auto scrollbar-hide items-center">
+        {filters.map((f) => (
+          <button
+            key={f.key}
+            onClick={() => onFilterChange(f.key === activeFilter ? "all" : f.key)}
+            className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all border ${
+              activeFilter === f.key && f.key !== "all"
+                ? "bg-primary/20 text-primary border-primary/50"
+                : f.key === "all" && activeFilter === "all"
+                ? "bg-secondary text-foreground border-border"
+                : "bg-secondary/50 text-muted-foreground border-transparent hover:border-border"
+            }`}
+          >
+            {f.label}
+          </button>
+        ))}
+        <span className="w-px h-5 bg-border flex-shrink-0" />
+        <button
+          onClick={() => {
+            const next = sortOrder === "none" ? "low" : sortOrder === "low" ? "high" : "none";
+            onSortChange(next);
+          }}
+          className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all border ${
+            sortOrder !== "none"
+              ? "bg-accent/20 text-accent border-accent/50"
+              : "bg-secondary/50 text-muted-foreground border-transparent hover:border-border"
+          }`}
+        >
+          {sortOrder === "low" ? "₹ Low→High" : sortOrder === "high" ? "₹ High→Low" : "Sort ₹"}
+        </button>
       </div>
     </div>
   );
 };
 
 export default FilterBar;
+export type { FilterType };

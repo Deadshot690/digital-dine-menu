@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,25 +6,25 @@
 
 @layer base {
   :root {
-    --background: 0 0% 7%;
-    --foreground: 40 10% 92%;
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
 
-    --card: 0 0% 10%;
-    --card-foreground: 40 10% 92%;
+    --card: 0 0% 11%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 10%;
-    --popover-foreground: 40 10% 92%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 38 72% 56%;
-    --primary-foreground: 0 0% 5%;
+    --primary: 0 72% 50%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 15%;
-    --secondary-foreground: 40 10% 80%;
+    --secondary-foreground: 0 0% 80%;
 
     --muted: 0 0% 14%;
     --muted-foreground: 0 0% 55%;
 
-    --accent: 38 72% 56%;
+    --accent: 40 80% 52%;
     --accent-foreground: 0 0% 5%;
 
     --destructive: 0 84.2% 60.2%;
@@ -32,25 +32,24 @@
 
     --border: 0 0% 18%;
     --input: 0 0% 18%;
-    --ring: 38 72% 56%;
+    --ring: 0 72% 50%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 7%;
-    --sidebar-foreground: 40 10% 92%;
-    --sidebar-primary: 38 72% 56%;
-    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 72% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 14%;
-    --sidebar-accent-foreground: 40 10% 92%;
+    --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 38 72% 56%;
+    --sidebar-ring: 0 72% 50%;
 
-    --font-display: 'Cormorant Garamond', Georgia, serif;
     --font-body: 'DM Sans', system-ui, sans-serif;
 
-    --tag-vegan: 142 60% 45%;
-    --tag-spicy: 15 85% 55%;
-    --tag-gf: 210 55% 55%;
+    --tag-veg: 142 60% 45%;
+    --tag-nonveg: 0 72% 50%;
+    --tag-bestseller: 40 80% 52%;
   }
 }
 
@@ -69,43 +68,35 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-  }
 }
 
 @layer utilities {
-  .font-display {
-    font-family: var(--font-display);
-  }
-
   .font-body {
     font-family: var(--font-body);
   }
 
-  .text-tag-vegan {
-    color: hsl(var(--tag-vegan));
+  .text-tag-veg {
+    color: hsl(var(--tag-veg));
   }
 
-  .text-tag-spicy {
-    color: hsl(var(--tag-spicy));
+  .text-tag-nonveg {
+    color: hsl(var(--tag-nonveg));
   }
 
-  .text-tag-gf {
-    color: hsl(var(--tag-gf));
+  .text-tag-bestseller {
+    color: hsl(var(--tag-bestseller));
   }
 
-  .bg-tag-vegan {
-    background-color: hsl(var(--tag-vegan) / 0.15);
+  .bg-tag-veg {
+    background-color: hsl(var(--tag-veg) / 0.15);
   }
 
-  .bg-tag-spicy {
-    background-color: hsl(var(--tag-spicy) / 0.15);
+  .bg-tag-nonveg {
+    background-color: hsl(var(--tag-nonveg) / 0.15);
   }
 
-  .bg-tag-gf {
-    background-color: hsl(var(--tag-gf) / 0.15);
+  .bg-tag-bestseller {
+    background-color: hsl(var(--tag-bestseller) / 0.15);
   }
 
   .scrollbar-hide {
